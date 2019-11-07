@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "6eb65bb3e8c47d5a")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "46784b0c9ccd25a8")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.8")]
 
 
 // FILE: models.generated.cs
@@ -66,11 +66,11 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// ListedProducts
+		/// FeaturedProducts
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("listedProducts")]
-		public IEnumerable<IPublishedContent> ListedProducts => this.Value<IEnumerable<IPublishedContent>>("listedProducts");
+		[ImplementPropertyType("feature")]
+		public IEnumerable<IPublishedContent> Feature => this.Value<IEnumerable<IPublishedContent>>("feature");
 
 		///<summary>
 		/// Products
@@ -117,7 +117,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("productImage")]
-		public IPublishedContent ProductImage => this.Value<IPublishedContent>("productImage");
+		public string ProductImage => this.Value<string>("productImage");
 
 		///<summary>
 		/// Product Name
