@@ -61,6 +61,11 @@
   </div>
 </div>
 
+@foreach (Product x in Model.Product){
+@x.ProductName;
+}
+
+
 <div class="container">
   <div style="text-align: right; margin-top: 10px; margin-bottom: 10px;">
     <button class="btn btn-primary" type="button" href="#">Chekout</button> 
