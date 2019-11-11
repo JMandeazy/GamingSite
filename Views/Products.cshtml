@@ -8,7 +8,6 @@
   
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 
-
 <div class="container" style="Margin-top: 10px">
   <div class ="row">
   @foreach (Product x in Model.Product)
@@ -39,8 +38,8 @@
   <div class ="row">
   @foreach (Product x in Model.Product)
   {
-      <div  class="col-sm-2" style="margin-bottom:20px; margin-top:20px; padding: 5px;" id="@x.Id">
-        <div class="card" style="height: 110%">
+      <div class="col-sm-2" style="margin-bottom:20px; margin-top:20px; padding: 5px;" id="@x.Id">
+        <div class="card" style="height: 110%;">
           <a href="@x.Url" class="product-grid__item">
             <img style="padding: 10px" class="card-img-top"  src="@x.ProductImage" alt="...">
           </a>
@@ -57,7 +56,6 @@
 </div>
 
 <button onclick="showCart()">Show Cart</button>
-
 
 <div id="cart"></div>
 
