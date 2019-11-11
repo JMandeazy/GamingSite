@@ -2,15 +2,20 @@ var cart = [];
 
 
 function testSave(id) {
-          let y = document.getElementById(`${id}`).textContent
-          let name = document.getElementById(`name${id}`).textContent
-          let price = document.getElementById(`price${id}`).textContent
+          let y = document.getElementById(`${id}`).textContent;
+          let name = document.getElementById(`name${id}`).textContent;
+          let price = document.getElementById(`price${id}`).textContent.split('Price:')[1] / 1;
           console.log(name);
-          console.log(price)
+          console.log(price);
 
-          let productToAdd = { Name: name, Price: price, };
-          cart.push(productToAdd);
-          localStorage.setItem('products', JSON.stringify(cart));
+          let productToAdd = { Name: name, Price: price, Amount: 1 };
+
+          checkIfExists(productToAdd);
+          saveToStorage(productToAdd);
+
+
+          //cart.push(productToAdd);
+          //localStorage.setItem('products', JSON.stringify(cart));
 }
 
 
@@ -19,7 +24,6 @@ function addToArray(id) {
           let productPrice = parseFloat(document.getElementById(`${id}price`).textContent);
           let selector = document.getElementById(`${id}color`);
           let color = selector[selector.selectedIndex].value;
-          let amount = parseInt(document.getElementById(`${id}amount`).value);
           let productToAdd = { Name: productName, Price: productPrice, Color: color, Amount: amount };
           checkIfExists(productToAdd);
 }
@@ -27,7 +31,7 @@ function addToArray(id) {
 function checkIfExists(product) {
           var i = cart.length;
           while (i--) {
-                    if (cart[i].Name === product.Name && cart[i].Color == product.Color) {
+                    if (cart[i].Name === product.Name) {
                               console.log("exists, adding amount")
                               cart[i].Amount += product.Amount
                               return;
@@ -53,19 +57,23 @@ function showCart() {
           let total = 0;
 
           for (const product of objects) {
+                    //console.log("Hi there, product", product)
                     let node = document.createElement('li');
+
                     let price = product.Price * product.Amount;
                     total += price;
-                    let text = document.createTextNode(`Product: ${product.Name}  Color: ${product.Color}  Price: ${product.Amount} x ${product.Price}kr = ${price}kr `);
+                    //console.log("product.Price", product.Price, "product.Amount", product.Amount, "*", product.Amount * product.Price)
+                    let text = document.createTextNode(`Product: ${product.Name}  Price: ${product.Amount * product.Price}kr `);
                     let button = document.createElement("button");
                     button.data = `${product.name}`;
                     button.innerHTML = 'remove';
-                    button.setAttribute("onclick", `removeItem("${product.Name}");`);
-                    node.appendChild(text);
-                    node.appendChild(button);
-                    list.appendChild(node);
+                    ///button.setAttribute("onclick", `removeItem("${product.Name}");`);
+                    button.addEventListener("click", () => removeItem(product.name))
+                    node.append(text);
+                    node.append(button);
+                    list.append(node);
           }
-          document.getElementById("cart").appendChild(list);
+          document.getElementById("cart").append(list);
 
           let taxesTotal = total * 1.25;
           let shippingfee = 50;
