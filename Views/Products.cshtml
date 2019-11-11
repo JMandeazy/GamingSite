@@ -13,7 +13,7 @@
   <div class ="row">
   @foreach (Product x in Model.Product)
   {
-    if(@x.OnSale == true)
+    if(@x.OnSale)
     {
       <div class="col-sm-4" id="@x.Id">
         <div class="card">
@@ -23,6 +23,7 @@
           <div class="card-body">
             <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
             <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
+            <div id="onSale@(x.Id)" style="visibility: hidden">@x.OnSale</div>
             <input type="button" value="Buy" onclick="testSave(@x.Id)">
           </div>
         </div>

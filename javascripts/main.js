@@ -5,28 +5,26 @@ function testSave(id) {
           let y = document.getElementById(`${id}`).textContent;
           let name = document.getElementById(`name${id}`).textContent;
           let price = document.getElementById(`price${id}`).textContent.split('Price:')[1] / 1;
+          let onSale = document.getElementById(`onSale${id}`).textContent;
+          console.log(onSale);
           console.log(name);
           console.log(price);
 
-          let productToAdd = { Name: name, Price: price, Amount: 1 };
+          let productToAdd = { Name: name, Price: price, Amount: 1, OnSale: onSale };
 
           checkIfExists(productToAdd);
           saveToStorage(productToAdd);
-
-
-          //cart.push(productToAdd);
-          //localStorage.setItem('products', JSON.stringify(cart));
 }
 
 
-function addToArray(id) {
+/*function addToArray(id) {
           let productName = document.getElementById(`${id}name`).textContent;
           let productPrice = parseFloat(document.getElementById(`${id}price`).textContent);
           let selector = document.getElementById(`${id}color`);
           let color = selector[selector.selectedIndex].value;
           let productToAdd = { Name: productName, Price: productPrice, Color: color, Amount: amount };
           checkIfExists(productToAdd);
-}
+}*/
 
 function checkIfExists(product) {
           var i = cart.length;
@@ -60,8 +58,10 @@ function showCart() {
                     //console.log("Hi there, product", product)
                     let node = document.createElement('li');
 
-                    let price = product.Price * product.Amount;
+                    let price = product.Price * (product.OnSale ? 0.8 : 1) * product.Amount;
+
                     total += price;
+
                     //console.log("product.Price", product.Price, "product.Amount", product.Amount, "*", product.Amount * product.Price)
                     let text = document.createTextNode(`Product: ${product.Name}  Price: ${product.Amount * product.Price}kr `);
                     let button = document.createElement("button");
@@ -75,6 +75,7 @@ function showCart() {
           }
           document.getElementById("cart").append(list);
 
+
           let taxesTotal = total * 1.25;
           let shippingfee = 50;
           let totalCost = taxesTotal + 50;
@@ -84,17 +85,16 @@ function showCart() {
           let priceList = document.createElement("ul");
 
           let priceNoVat = document.createElement("li");
-          let priceNoVatText = document.createTextNode(`Price before tax: ${total}kr`);
+          let priceNoVatText = document.createTextNode(`Price before tax: ${Math.ceil(total)}kr`);
 
           let priceVat = document.createElement("li");
-          let priceVatText = document.createTextNode(`Price after tax: ${taxesTotal}kr`);
+          let priceVatText = document.createTextNode(`Price after tax: ${Math.ceil(taxesTotal)}kr`);
 
           let shipping = document.createElement("li");
-          let shippingText = document.createTextNode(`Shipping fee: ${shippingfee}kr`);
-
+          let shippingText = document.createTextNode(`Shipping fee: ${Math.ceil(shippingfee)}kr`);
 
           let finalCost = document.createElement("li");
-          let finalCostText = document.createTextNode(`Total: ${totalCost}kr`);
+          let finalCostText = document.createTextNode(`Total: ${Math.ceil(totalCost)}kr`);
 
           priceNoVat.appendChild(priceNoVatText);
           priceVat.appendChild(priceVatText);

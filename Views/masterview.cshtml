@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="/css/stickyfooter.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
     </head>
 
     <body>
@@ -24,7 +25,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/Products">Products</a>
       </li>
+      
     </ul>
+    
 
 <!--<div class="container">
   <div class="shopping-cart">
@@ -50,7 +53,8 @@
 
 
 
-    <a href="#"><img src="/media/cart.png"></a>
+    <!--<a href="#"><img src="/media/cart.png" onclick="showCart()"></a>-->
+ 
     <!--SEARCHBAR-->
     <!--<form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -58,6 +62,16 @@
     </form>-->
   </div>
 </nav>
+ <div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Right-aligned menu
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
         <main>
             @RenderBody()
         </main>
