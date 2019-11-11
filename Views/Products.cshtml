@@ -8,42 +8,28 @@
   
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 
-<div class="container">
-    <div class="row">
-      <div class="col-sm-4">
+
+<div class="container" style="Margin-top: 10px">
+  <div class ="row">
+  @foreach (Product x in Model.Product)
+  {
+    if(@x.OnSale == true)
+    {
+      <div class="col-sm-4" id="@x.Id">
         <div class="card">
-          <a href="products/kingston-ssd-harddrive" class="product-grid__item">
-              <img src="Media/product7.jpg" class="card-img-top" alt="A cat toy.">
-          </a>    
-            <div class="card-body">
-              <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
-              <p class="card-text">SSID med 512GB.</p>
-            </div>
+          <a href="@x.Url" class="product-grid__item">
+            <img src="@x.ProductImage" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body">
+            <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
+            <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
+            <input type="button" value="Buy" onclick="testSave(@x.Id)">
+          </div>
         </div>
-      </div>
-    <div class="col-sm-4">
-      <div class="card">
-        <a href="products/gaming-headset" class="product-grid__item">
-          <img src="Media/product9.jpg" class="card-img-top" alt="A dog toy.">
-        </a>  
-        <div class="card-body">
-          <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
-          <p class="card-text">Skönaste headsets i norden.</p>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card">
-        <a href="products/gaming-mouse" class="product-grid__item">
-            <img src="Media/product10.jpg" class="card-img-top" alt="A dog being brushed.">
-        </a>
-        <div class="card-body">
-          <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
-            <p class="card-text">Våra möss jagar gärna katter.</p>
-        </div>
-      </div>
-      </div>
-    </div>
+    }
+  }
+  </div>
 </div>
 
 <hr>
@@ -69,8 +55,10 @@
   </div>
 </div>
 
+<button onclick="showCart()">Show Cart</button>
 
 
+<div id="cart"></div>
 
 <div class="container">
   <div style="text-align: right; margin-top: 10px; margin-bottom: 10px;">
