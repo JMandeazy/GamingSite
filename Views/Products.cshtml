@@ -16,7 +16,7 @@
               <img src="Media/product7.jpg" class="card-img-top" alt="A cat toy.">
           </a>    
             <div class="card-body">
-              <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
+              <input class="btn-primary btn btn-sm" type="button" value="Buy">
               <p class="card-text">SSID med 512GB.</p>
             </div>
         </div>
@@ -27,7 +27,7 @@
           <img src="Media/product9.jpg" class="card-img-top" alt="A dog toy.">
         </a>  
         <div class="card-body">
-          <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
+          <input class="btn-primary btn btn-sm" type="button" value="Buy">
           <p class="card-text">Skönaste headsets i norden.</p>
         </div>
       </div>
@@ -38,7 +38,7 @@
             <img src="Media/product10.jpg" class="card-img-top" alt="A dog being brushed.">
         </a>
         <div class="card-body">
-          <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
+          <input class="btn-primary btn btn-sm" type="button" value="Buy">
             <p class="card-text">Våra möss jagar gärna katter.</p>
         </div>
       </div>
@@ -61,7 +61,7 @@
           <div class="card-body">
             <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
             <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
-            <input type="button" value="Buy" onclick="testSave(@x.Id)">
+            <input class="btn-primary btn btn-sm" type="button" value="Buy" onclick="testSave(@x.Id)">
           </div>
         </div>
         </div>
