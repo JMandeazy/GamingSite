@@ -7,3 +7,9 @@ body {
       main {
           flex: 1;
       }
+
+
+
+      .card {
+          height : 100%;
+      }

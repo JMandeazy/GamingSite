@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "46784b0c9ccd25a8")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "ee0c545fbfe03be8")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -42,7 +42,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Products</summary>
 	[PublishedModel("products")]
-	public partial class Products : PublishedContentModel
+	public partial class Products : PublishedContentModel, IContentBase, INavitagionBase
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -66,18 +66,46 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// FeaturedProducts
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("feature")]
-		public IEnumerable<IPublishedContent> Feature => this.Value<IEnumerable<IPublishedContent>>("feature");
-
-		///<summary>
 		/// Products
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("product")]
 		public IEnumerable<IPublishedContent> Product => this.Value<IEnumerable<IPublishedContent>>("product");
+
+		///<summary>
+		/// BodyText
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("bodyText")]
+		public Newtonsoft.Json.Linq.JToken BodyText => Umbraco.Web.PublishedModels.ContentBase.GetBodyText(this);
+
+		///<summary>
+		/// Page Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("pageTitle")]
+		public string PageTitle => Umbraco.Web.PublishedModels.ContentBase.GetPageTitle(this);
+
+		///<summary>
+		/// Keywords
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("keywords")]
+		public IEnumerable<string> Keywords => NavitagionBase.GetKeywords(this);
+
+		///<summary>
+		/// seoMetaDescription
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("seoMetaDescription")]
+		public string SeoMetaDescription => NavitagionBase.GetSeoMetaDescription(this);
+
+		///<summary>
+		/// umbracoNavhide
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("umbracoNavhide")]
+		public bool UmbracoNavhide => NavitagionBase.GetUmbracoNavhide(this);
 	}
 
 	/// <summary>Product</summary>
@@ -104,6 +132,13 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// BodyText
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("bodyText")]
+		public Newtonsoft.Json.Linq.JToken BodyText => this.Value<Newtonsoft.Json.Linq.JToken>("bodyText");
 
 		///<summary>
 		/// Product Description
@@ -217,6 +252,143 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("karusell")]
 		public IEnumerable<IPublishedContent> Karusell => this.Value<IEnumerable<IPublishedContent>>("karusell");
+	}
+
+	// Mixin Content Type with alias "contentBase"
+	/// <summary>Content Base</summary>
+	public partial interface IContentBase : IPublishedContent
+	{
+		/// <summary>BodyText</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		Newtonsoft.Json.Linq.JToken BodyText { get; }
+
+		/// <summary>Page Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string PageTitle { get; }
+	}
+
+	/// <summary>Content Base</summary>
+	[PublishedModel("contentBase")]
+	public partial class ContentBase : PublishedContentModel, IContentBase
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public new const string ModelTypeAlias = "contentBase";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContentBase, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public ContentBase(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// BodyText
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("bodyText")]
+		public Newtonsoft.Json.Linq.JToken BodyText => GetBodyText(this);
+
+		/// <summary>Static getter for BodyText</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static Newtonsoft.Json.Linq.JToken GetBodyText(IContentBase that) => that.Value<Newtonsoft.Json.Linq.JToken>("bodyText");
+
+		///<summary>
+		/// Page Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("pageTitle")]
+		public string PageTitle => GetPageTitle(this);
+
+		/// <summary>Static getter for Page Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetPageTitle(IContentBase that) => that.Value<string>("pageTitle");
+	}
+
+	// Mixin Content Type with alias "navitagionBase"
+	/// <summary>Navitagion Base</summary>
+	public partial interface INavitagionBase : IPublishedContent
+	{
+		/// <summary>Keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		IEnumerable<string> Keywords { get; }
+
+		/// <summary>seoMetaDescription</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string SeoMetaDescription { get; }
+
+		/// <summary>umbracoNavhide</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		bool UmbracoNavhide { get; }
+	}
+
+	/// <summary>Navitagion Base</summary>
+	[PublishedModel("navitagionBase")]
+	public partial class NavitagionBase : PublishedContentModel, INavitagionBase
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public new const string ModelTypeAlias = "navitagionBase";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NavitagionBase, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public NavitagionBase(IPublishedContent content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Keywords
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("keywords")]
+		public IEnumerable<string> Keywords => GetKeywords(this);
+
+		/// <summary>Static getter for Keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IEnumerable<string> GetKeywords(INavitagionBase that) => that.Value<IEnumerable<string>>("keywords");
+
+		///<summary>
+		/// seoMetaDescription
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("seoMetaDescription")]
+		public string SeoMetaDescription => GetSeoMetaDescription(this);
+
+		/// <summary>Static getter for seoMetaDescription</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetSeoMetaDescription(INavitagionBase that) => that.Value<string>("seoMetaDescription");
+
+		///<summary>
+		/// umbracoNavhide
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("umbracoNavhide")]
+		public bool UmbracoNavhide => GetUmbracoNavhide(this);
+
+		/// <summary>Static getter for umbracoNavhide</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static bool GetUmbracoNavhide(INavitagionBase that) => that.Value<bool>("umbracoNavhide");
 	}
 
 	/// <summary>Folder</summary>
