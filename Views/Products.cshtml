@@ -16,15 +16,19 @@
     if(@x.OnSale)
     {
       <div class="col-sm-4" id="@x.Id">
-        <div class="card">
+        <div class="card" style="height: 110%">
           <a href="@x.Url" class="product-grid__item">
             <img src="@x.ProductImage" class="card-img-top" alt="...">
           </a>
           <div class="card-body">
             <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
             <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
+<<<<<<< HEAD
             <div id="onSale@(x.Id)" style="visibility: hidden">@x.OnSale</div>
             <input type="button" value="Buy" onclick="testSave(@x.Id)">
+=======
+            <input class="content-bottom btn-primary btn" type="button" value="Add to cart" onclick="testSave(@x.Id)">
+>>>>>>> develop
           </div>
         </div>
         </div>
@@ -40,16 +44,16 @@
   <div class ="row">
   @foreach (Product x in Model.Product)
   {
-      <div class="col-sm-2" style="margin-bottom:20px" id="@x.Id">
-        <div class="card ">
-
+      <div  class="col-sm-2" style="margin-bottom:20px; margin-top:20px; padding: 5px;" id="@x.Id">
+        <div class="card" style="height: 110%">
           <a href="@x.Url" class="product-grid__item">
-            <img src="@x.ProductImage" class="img-fluid" alt="...">
+            <img style="padding: 10px" class="card-img-top"  src="@x.ProductImage" alt="...">
           </a>
           <div class="card-body" >
-            <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
-            <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
-            <input type="button" value="Add to cart" onclick="testSave(@x.Id)">
+            <div class="card-title" id="name@(x.Id)">@x.ProductName</div>
+            <p class="card-subtitle" id="price@(x.Id)">Price: @x.ProductPrice</p>
+            <p class="card-text"></p>
+            <input style="padding: 10px" class="content-bottom btn-primary btn" type="button" value="Add to cart" onclick="testSave(@x.Id)">
           </div>
         </div>
         </div>
