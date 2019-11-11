@@ -3,6 +3,9 @@
 @{
 	Layout = "masterview.cshtml";
 }
+  <script src="/javascripts/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/mystyle.css">
+  
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
 
 <div class="container" style="Margin-top: 20px">
@@ -43,26 +46,39 @@
     </div>
 </div>
 
+<hr>
+<br>
+
 <div class="container" style="Margin-top: 10px">
   <div class ="row">
   @foreach (Product x in Model.Product)
   {
+<<<<<<< HEAD
       <div class="col-sm-2" style="margin-bottom: 20px">
+=======
+      <div class="col-sm-3" id="@x.Id">
+>>>>>>> 7c5c5b4ce73910d1f856a54c6a8bdff051ed535d
         <div class="card">
           <a href="@x.Url" class="product-grid__item">
             <img src="@x.ProductImage" class="card-img-top" alt="...">
           </a>
           <div class="card-body">
-            <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
-            <p class="card-text">@x.ProductName</p>
+            <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
+            <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
+            <input type="button" value="Buy" onclick="testSave(@x.Id)">
           </div>
         </div>
-      </div>
+        </div>
   }
   </div>
 </div>
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7c5c5b4ce73910d1f856a54c6a8bdff051ed535d
 <div class="container">
   <div style="text-align: right; margin-top: 10px; margin-bottom: 10px;">
     <button class="btn btn-primary" type="button" href="#">Chekout</button> 
