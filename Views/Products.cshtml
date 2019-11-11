@@ -23,22 +23,20 @@
           <div class="card-body">
             <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
             <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
-<<<<<<< HEAD
-            <div id="onSale@(x.Id)" style="visibility: hidden">@x.OnSale</div>
+            
             <input type="button" value="Buy" onclick="testSave(@x.Id)">
-=======
-            <input class="content-bottom btn-primary btn" type="button" value="Add to cart" onclick="testSave(@x.Id)">
->>>>>>> develop
+            <div id="onSale@(x.Id)" style="visibility: hidden">@x.OnSale</div>
           </div>
         </div>
         </div>
     }
   }
   </div>
-</div>
-
-<hr>
+</div>  
 <br>
+<br>
+<hr>
+
 
 <div class="container" style="margin-top: 10px">
   <div class ="row">
@@ -54,6 +52,7 @@
             <p class="card-subtitle" id="price@(x.Id)">Price: @x.ProductPrice</p>
             <p class="card-text"></p>
             <input style="padding: 10px" class="content-bottom btn-primary btn" type="button" value="Add to cart" onclick="testSave(@x.Id)">
+            <div id="onSale@(x.Id)" style="visibility: hidden">@x.OnSale</div>
           </div>
         </div>
         </div>
