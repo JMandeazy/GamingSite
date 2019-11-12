@@ -2,6 +2,14 @@
 .dropdown-menu{
           width: 25vw;
 }
+.cart{
+          width: 100%;
+}
+
+.button{
+          background-color: blue;
+}
+
 .dropdown-menu img{
           height: 1vw;
           float: left;
