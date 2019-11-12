@@ -2,11 +2,13 @@ var cart = [];
 
 
 function testSave(id) {
-  let y = document.getElementById(`${id}`).textContent;
+  //let y = document.getElementById(`${id}`).textContent;
   let name = document.getElementById(`name${id}`).textContent;
-  let price = document.getElementById(`price${id}`).textContent.split('Price:')[1] / 1;
+  let price = document.getElementById(`price${id}`).textContent.split('$ ')[1] / 1;
   let onSale = document.getElementById(`onSale${id}`).textContent;
   let image = document.getElementById(`image${id}`).src;
+  console.log(price);
+  console.log(name);
 
 
   let productToAdd = { Name: name, Price: price, Amount: 1, OnSale: onSale, Image: image };
