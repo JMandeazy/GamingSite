@@ -22,9 +22,9 @@
           </a>
           <div class="card-body">
             <div class="card-text" id="name@(x.Id)">@x.ProductName</div>
-            <p class="card-text" id="price@(x.Id)">Price: @x.ProductPrice</p>
+            <p class="card-text" id="price@(x.Id)">$ @x.ProductPrice</p>
             
-            <input type="button" value="Buy" onclick="testSave(@x.Id)">
+            <input class="btn-primary btn btn-sm" type="button" value="Add to cart" onclick="testSave(@x.Id)">
             <div id="onSale@(x.Id)" style="visibility: hidden">@x.OnSale</div>
           </div>
         </div>
@@ -49,7 +49,7 @@
           </a>
           <div class="card-body" >
             <div class="card-title" id="name@(x.Id)">@x.ProductName</div>
-            <p class="card-subtitle" id="price@(x.Id)">Price: @x.ProductPrice</p>
+            <p class="card-subtitle" id="price@(x.Id)">$ @x.ProductPrice</p>
             <p class="card-text"></p>
             <input style="padding: 10px" class="content-bottom btn-primary btn" type="button" value="Add to cart" onclick="testSave(@x.Id)">
             <div id="onSale@(x.Id)" style="visibility: hidden">@x.OnSale</div>
@@ -60,10 +60,7 @@
   </div>
 </div>
 
-<button onclick="showCart()">Show Cart</button>
 
-
-<div id="cart"></div>
 
 <div class="container">
   
