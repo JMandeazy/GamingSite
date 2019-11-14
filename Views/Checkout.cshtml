@@ -3,3 +3,39 @@
 @{
 	Layout = "masterview.cshtml";
 }
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/css/stickyfooter.css">
+        <link rel="stylesheet" type="text/css" href="/css/shoppingcart.css">
+    </head>
+
+	<body>
+
+		<table class="table-fill">
+    <thead>
+      <tr>
+        <th class="text-left">Product</th>
+        <th class="text-left">Price</th>
+      </tr>
+    </thead>
+    <tbody id="checkout-table" class="table-hover">
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>
+          Total: (freight + $10) $<span id="orderTotal"></span>
+        </th>
+        <th>
+          VAT: $<span id="orderVAT"></span>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+
+	</body>
+</html>
