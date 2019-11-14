@@ -2,11 +2,13 @@ var cart = [];
 
 
 function testSave(id) {
-  let y = document.getElementById(`${id}`).textContent;
+  //let y = document.getElementById(`${id}`).textContent;
   let name = document.getElementById(`name${id}`).textContent;
-  let price = document.getElementById(`price${id}`).textContent.split('Price:')[1] / 1;
+  let price = document.getElementById(`price${id}`).textContent.split('$ ')[1] / 1;
   let onSale = document.getElementById(`onSale${id}`).textContent;
   let image = document.getElementById(`image${id}`).src;
+  console.log(price);
+  console.log(name);
 
 
   let productToAdd = { Name: name, Price: price, Amount: 1, OnSale: onSale, Image: image };
@@ -39,13 +41,13 @@ function showCart() {
   let objects = getFromStorage();
   console.log(objects);
 
-  let list = document.createElement("ul");
+  let list = document.createElement("th");
   let total = 0;
 
 
   for (const product of objects) {
 
-    let node = document.createElement('li');
+    let node = document.createElement('tr');
     let sale = 0;
     if (product.OnSale === "True") {
       sale = Math.floor(product.Amount / 3) * product.Price;
@@ -59,6 +61,7 @@ function showCart() {
 
     let text = document.createTextNode(`${product.Name} ${product.Amount}: $${price} ${sale ? `(3 for 2 rebate $${sale})` : ''}`);
     let button = document.createElement("button");
+    button.style.cssFloat = "right";
     button.data = `${product.name}`;
     button.innerHTML = 'X';
     button.addEventListener("click", () => removeItem(product.name))
@@ -79,18 +82,18 @@ function showCart() {
 
   localStorage.setItem('price', JSON.stringify(totalCost));
 
-  let priceList = document.createElement("ul");
+  let priceList = document.createElement("th");
 
-  let priceNoVat = document.createElement("li");
+  let priceNoVat = document.createElement("tr");
   let priceNoVatText = document.createTextNode(`Price before tax: $${Math.ceil(total)}`);
 
-  let priceVat = document.createElement("li");
+  let priceVat = document.createElement("tr");
   let priceVatText = document.createTextNode(`Price after tax: $${Math.ceil(taxesTotal)}`);
 
-  let shipping = document.createElement("li");
+  let shipping = document.createElement("tr");
   let shippingText = document.createTextNode(`Shipping fee: $${Math.ceil(shippingfee)}`);
 
-  let finalCost = document.createElement("li");
+  let finalCost = document.createElement("tr");
   let finalCostText = document.createTextNode(`Total: $${Math.ceil(totalCost)}`);
 
   priceNoVat.appendChild(priceNoVatText);
