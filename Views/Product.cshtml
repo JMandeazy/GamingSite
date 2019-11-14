@@ -3,16 +3,20 @@
 @{
 	Layout = "masterview.cshtml";
 }
-<script src="/javascripts/main.js"></script>
 
+<body>
 <div class="container">
 	<div class="col-lg-12">
-		<img class="col-md-6" src="@Model.ProductImage" alt="...">
-		<h2>@Model.ProductName</h2>
+		<img class="col-md-6 mt-5 mb-5" id="image@(Model.Id)" src="@Model.ProductImage" alt="...">
+		<h2 id="name@(Model.Id)">@Model.ProductName</h2>
 		 <div style="text-align: right">
-				<input class="btn-primary btn btn-sm" type="button" value="Buy" onclick="testSave(@Model.Id)">
+				<input class="btn-secondary btn-pill btn btn-sm btn-outline-light btn-sm" onclick="testSave(@Model.Id)" type="button" value="Add to cart" onclick="testSave(@Model.Id)">
 			</div>
-				<div class="col-sm-4" >@Model.ProductPrice Monies</div> 
+				<div class="col-sm-4" id="price@(Model.Id)" ><b>$ @Model.ProductPrice</b> </div> 
+				<br/>
 		<div style="margin-bottom: 15px" class="col-md-8">@Model.ProductDescription</div>
+		<div id="onSale@(Model.Id)" style="visibility: hidden">@Model.OnSale</div>
 	</div>	
 </div>
+<script src="~/javascripts/main.js"></script>
+<body>

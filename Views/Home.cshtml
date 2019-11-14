@@ -1,4 +1,4 @@
-﻿<!Doctype html>
+﻿
 @{
 	Layout = "masterview.cshtml";
 }
@@ -8,11 +8,12 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+     <link rel="stylesheet" type="text/css" href="/css/mystyle.css">
 <body>
     <main class="container-fluid mt-5">
     <div class="row">
-      <div class="offset-lg-4 col-lg-4 mb-5">
-        <div class="carousel-inner" style="box-shadow:1px">
+      <div class="offset-lg-3 col-lg-6 mb-5">
+        <div class="carousel-inner" >
           <div class="col-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
@@ -32,17 +33,17 @@
                 </div>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon" style="background-color:black"></span>
                 <span class="sr-only">Previous</span>
               </a>
               <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon" style="background-color:black"></span>
                 <span class="sr-only">Next</span>
               </a>
             </div>
           </div>
         </div>
-        
+        <br/>
         <h4>Rabatt</h4>
           <div class="row mt-2">
           <div class="col-md-4"> 
@@ -50,7 +51,7 @@
                 <div class="card">
               <img src="Media/product7.jpg" class="card-img-top" alt="SSID Harddrive.">
               <div class="card-body">
-                <p class="card-text">SSID med 512GB lagringsminne.</p>
+                <p class="card-text">SSD Harddrive 512MB.</p>
               </div>
               </a>
             </div>
@@ -60,7 +61,7 @@
             <div class="card">
               <img src="Media/product9.jpg" class="card-img-top" alt="Headset for gaming">
               <div class="card-body">
-                <p class="card-text">Skönaste headsets i norden.</p>
+                <p class="card-text">Comfortable gaming headset.</p>
               </div>
               </a>
             </div>
@@ -70,7 +71,7 @@
             <div class="card">
               <img src="Media/product10.jpg" class="card-img-top" alt="Gaming mouse.">
               <div class="card-body">
-                <p class="card-text">Våra möss jagar gärna katter.</p>
+                <p class="card-text">Precision gaming mouse.</p>
               </div>
               </a>
             </div>
@@ -86,5 +87,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+    <script src="/javascripts/main.js"></script>
 </body>
 </html>

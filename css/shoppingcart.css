@@ -1,3 +1,14 @@
 
+.dropdown-menu{
+          width: 25vw;
+}
+.dropdown-menu img{
+          height: 1vw;
+          float: left;
+      }
 
-
+.price{
+                margin-top: 2vw;
+      }
+      
+    
