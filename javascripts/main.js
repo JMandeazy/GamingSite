@@ -1,4 +1,5 @@
 var cart = [];
+var history = [];
 
 
 function testSave(id) {
@@ -31,9 +32,18 @@ function checkIfExists(product) {
 function saveToStorage() {
   localStorage.setItem('products', JSON.stringify(cart));
 }
+function saveHistoryToStorage() {
+  localStorage.setItem('history', JSON.stringify(cart));
+}
+function savetoOrderHistory() {
+  localStorage.setItem('products', JSON.stringify(cart));
+}
 
 function getFromStorage() {
   return JSON.parse(localStorage.getItem('products'));
+}
+function getHistoryFromStorage() {
+  return JSON.parse(localStorage.getItem('history'));
 }
 
 function showCart() {
@@ -108,9 +118,15 @@ function showCart() {
   let x = document.getElementById("price");
   x.innerHTML = "";
   x.appendChild(priceList);
+
+  let checkout = document.createElement("a");
+  let button = document.createElement("button");
+  checkout.append(button);
+  checkout.href = "/Products/Checkout"
+  button.innerHTML = "Checkout";
+  priceList.append(checkout);
+
 }
-
-
 
 function removeItem(name) {
   console.log(name);
@@ -128,11 +144,18 @@ function confirm() {
   let price = JSON.parse(localStorage.getItem('price'))
   let products = getFromStorage();
 
-  let list = document.createElement("ul");
-
+  let list = document.createElement("th");
+  let total = 0;
   for (const product of products) {
-    let node = document.createElement('li');
-    let text = document.createTextNode(`Product: ${product.Name}  Color: ${product.Color}  Amount: ${product.Amount}`);
+
+    let sale = 0;
+    if (product.OnSale === "True") {
+      sale = Math.floor(product.Amount / 3) * product.Price;
+    }
+    let price = product.Price * product.Amount - sale;
+
+    let node = document.createElement('tr');
+    let text = document.createTextNode(`Product: ${product.Name} Amount: ${product.Amount} Price: ${product.Price} ${sale ? `(3 for 2 rebate $${sale})` : ''} `);
 
     node.appendChild(text);
     list.appendChild(node);
@@ -146,18 +169,56 @@ function confirm() {
   totalPrice.appendChild(priceNode);
   document.getElementById("confirm").appendChild(totalPrice);
   let button = document.createElement("button");
-  button.data = `yo`;
   button.innerHTML = 'Confirm';
-  button.setAttribute("onclick", `confirmOrder(); location.href='index.html'`);
+  button.setAttribute("onclick", `confirmOrder(); location.href="/products/history"`);
   document.getElementById("confirm").appendChild(button);
 
 }
 
 function confirmOrder() {
-  localStorage.clear()
+  let products = getFromStorage();
+
+  for (const product of products) {
+
+    let productToAdd = { Type: history, Date: new Date().toLocaleDateString(), Name: product.Name, Price: product.Price, Amount: 1, OnSale: product.OnSale };
+    //checkIfExists(productToAdd);
+    checkIfExists(productToAdd);
+    saveHistoryToStorage(productToAdd);
+  }
 }
 
+//Saves the products to a new localstorare to use as order history
+function savedOrderhistory() {
+  let price = JSON.parse(localStorage.getItem('price'))
+  let products = JSON.parse(localStorage.getItem('history'))
 
+  let list = document.createElement("th");
+  let total = 0;
+  for (const product of products) {
+
+    let sale = 0;
+    if (product.OnSale === "True") {
+      sale = Math.floor(product.Amount / 3) * product.Price;
+    }
+    let price = product.Price * product.Amount - sale;
+
+    let node = document.createElement('tr');
+    let text = document.createTextNode(` Date: ${product.Date} Product: ${product.Name} Amount: ${product.Amount} Price: ${product.Price} ${sale ? `(3 for 2 rebate $${sale})` : ''} `);
+
+    node.appendChild(text);
+    list.appendChild(node);
+  }
+
+  document.getElementById("confirm").appendChild(list);
+  let totalPrice = document.createElement("ul");
+  let priceNode = document.createElement('li');
+  let priceText = document.createTextNode(`TotalPrice with tax and Shipping: ${price}$`);
+  priceNode.appendChild(priceText);
+  totalPrice.appendChild(priceNode);
+  document.getElementById("confirm").appendChild(totalPrice);;
+
+
+}
 
 function validate(evt) {
   var theEvent = evt || window.event;

@@ -1,11 +1,11 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Checkout>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Orderhistory>
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
 	Layout = "masterview.cshtml";
 }
 
-<body onload="confirm()">
-	<h1>Confirm Order!</h1>
+<body onload="savedOrderhistory()">
+<h1>Order History</h1>
 	
           <div id="confirm" class="list-group-item">
 
