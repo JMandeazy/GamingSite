@@ -1,4 +1,4 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Checkout>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Orderhistory>
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
 	Layout = "masterview.cshtml";
@@ -14,19 +14,21 @@
         
     </head>
 
+<body onload="orderHistory()"> 
 
-
-	<body onload="confirm()">
-  <div class="container" style="Margin-top: 30px">
+ <div class="container" style="Margin-top: 30px">
     <div class ="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
     
-   <div id="confirm"><h1>Here's your order</h1></div>
+   <div id="orderHistory"><h1>Here's your order history</h1></div>
+    
       </div>
     </div>
   </div>
-   <script src="~/javascripts/main.js"></script>
- 
-	</body>
+
+
+</body>
+                        
   
-</html>
+  <script src="~/javascripts/main.js"></script>
+  </html>
