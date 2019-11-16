@@ -1,5 +1,4 @@
 var cart = [];
-var history = [];
 
 
 function testSave(id) {
@@ -34,9 +33,6 @@ function saveToStorage() {
 }
 function saveHistoryToStorage() {
   localStorage.setItem('history', JSON.stringify(cart));
-}
-function savetoOrderHistory() {
-  localStorage.setItem('products', JSON.stringify(cart));
 }
 
 function getFromStorage() {
@@ -135,8 +131,13 @@ function removeItem(name) {
   var removeIndex = products.map(function (item) { return item.Name; }).indexOf(name);
   products.splice(removeIndex, 1);
 
-  localStorage.clear('products');
+  delete localStorage.products;
   localStorage.setItem('products', JSON.stringify(products));
+  location.reload();
+}
+
+function deleteHistory() {
+  delete localStorage.history;
   location.reload();
 }
 
@@ -172,19 +173,26 @@ function confirm() {
   button.innerHTML = 'Confirm';
   button.setAttribute("onclick", `confirmOrder(); location.href="/products/history"`);
   document.getElementById("confirm").appendChild(button);
-
 }
 
 function confirmOrder() {
   let products = getFromStorage();
 
+  var orderHistory = JSON.parse(localStorage.getItem('history')) || [];
   for (const product of products) {
 
-    let productToAdd = { Type: history, Date: new Date().toLocaleDateString(), Name: product.Name, Price: product.Price, Amount: 1, OnSale: product.OnSale };
-    //checkIfExists(productToAdd);
-    checkIfExists(productToAdd);
-    saveHistoryToStorage(productToAdd);
+    let productToAdd = {
+      Type: history,
+      Date: new Date().toLocaleDateString(),
+      Name: product.Name,
+      Price: product.Price,
+      Amount: product.Amount,
+      OnSale: product.OnSale
+    };
+    orderHistory.push(productToAdd);
+    localStorage.setItem('history', JSON.stringify(orderHistory));
   }
+  delete localStorage.products;
 }
 
 //Saves the products to a new localstorare to use as order history
