@@ -168,7 +168,9 @@ function confirm() {
   document.getElementById("confirm").appendChild(totalPrice);
   let button = document.createElement("button");
   button.data = `yo`;
-  button.innerHTML = 'Click here to buy';
+  button.innerHTML = 'Click here to confirm your order!';
+  button.class= "button btn-secondary btn-pill"
+  button.style="padding: 10px btn-secondary"
   button.setAttribute("onclick", `location.href='orderhistory'`);
   document.getElementById("confirm").appendChild(button);
 }
