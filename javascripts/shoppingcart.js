@@ -13,9 +13,7 @@ function getFromLocalStorage() {
                   <img src="${product.image}" width=100>
                 </td>
                 <td>${product.title}</td>
-                <td class="product-price" data-price="${product.price}">${
-      product.price
-      }</td>
+                <td class="product-price" data-price="${product.price}">${product.price}</td>
                 <td>
                 <a href="#" class="remove" data-id="${product.id}">X</a>
                 </td>

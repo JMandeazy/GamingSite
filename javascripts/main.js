@@ -67,7 +67,7 @@ function showCart() {
 
     let node = document.createElement('tr');
     let sale = 0;
-    if (product.OnSale === "True") {
+    if (product.OnSale !== "True") {
       sale = Math.floor(product.Amount / 3) * product.Price;
     }
     let price = product.Price * product.Amount - sale;
@@ -182,20 +182,20 @@ let list = document.createElement("ul");
 
 for (const order of getOrderHistory()) {
   console.log(order);
-    let node = document.createElement('tr');
-    let photo = document.createElement('tr');
+    let node = document.createElement('table');
+    let photo = document.createElement('table');
  
         photo.innerHTML =  `
-          <tr>
+        <table class="table">
           ${order.products.map(product => {
-            return `<td> 
+            return `<div class="d-flex justify-content-between"> 
             <img src="${product.Image}" width=100>&nbsp;
-          </td>
-          <td>${product.Name}</td>
-          <td class="product-price" data-price="${product.Amount}">&nbsp; Amount : ${product.Amount}&nbsp;</td>
-          <td>Date:&nbsp; ${new Date().toLocaleDateString()}</td>`}).join('')}
+           ${product.Name}
+           Amount : ${product.Amount}&nbsp;
+           Date:&nbsp; ${new Date().toLocaleDateString()}</div>`}).join('')}
+          <hr/>
           
-          </tr>
+          </table>
               `;
     node.appendChild(photo);
     list.appendChild(node);
@@ -225,4 +225,24 @@ function validate(evt) {
     theEvent.returnValue = false;
     if (theEvent.preventDefault) theEvent.preventDefault();
   }
+}
+
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
